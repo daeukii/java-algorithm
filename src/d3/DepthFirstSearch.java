@@ -33,16 +33,16 @@ public class DepthFirstSearch {
             adjMap[rightNode][leftNode] = 1;
         }
 
-        // 다음 방물할 곳을 기록하기 위한 스택하나
+        // 다음 방문할 곳을 기록하기 위한 스택하나
         Stack<Integer> toVisit = new Stack<>();
-        // 방문한 순서를 살펴보기 위한 리스트  하나
+        // 방문한 순서를 살펴보기 위한 리스트 하나
         List<Integer> visitOrder = new ArrayList<>();
         // 내가 방문했는지를 파악하기 위한 배열 하나
         boolean[] visited = new boolean[nodeCount + 1];
 
         // DFS 시작
         // 1. 가장 먼저 방문할 곳을 넣어둔다.
-        toVisit.push(1);
+        toVisit.push(4);
         // 2. 스택이 빌때까지(더이상 방문할곳이 없을때까지) 반복한다.
         while (!toVisit.empty()) {
             // 3. 다음 방문할 곳을 pop한다.
@@ -56,9 +56,9 @@ public class DepthFirstSearch {
             // 5. 방문 순서를 기록해준다.
             visitOrder.add(next);
 
-            // 6. 다음 방문 대상을 stack에 push한다.
-            for (int i = nodeCount; i > 0 ; i--) {
-                // 만약 방문했다면 (visited[i])에 추가하지 않고,
+            // 6. 다음 방문 대상을 스택에 push한다.
+            for (int i = nodeCount; i > 0; i--) {
+                // 만약 방문했다면 (visited[i]) 추가하지 않고,
                 if (visited[i]) continue;
                 // 도달할 수 있다면 추가한다.
                 if (adjMap[next][i] == 1) {
@@ -66,5 +66,8 @@ public class DepthFirstSearch {
                 }
             }
         }
+        // 방문 순서 확인
+        System.out.println(visitOrder);
+
     }
 }
